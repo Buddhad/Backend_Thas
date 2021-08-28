@@ -1,0 +1,92 @@
+---------------Redis------------------------------
+Redis - is semilar like a local storage or a session storage .
+Redis-cli --Start the redis local host 
+* it has key-value pair 
+* it's value  always string {key: "value"}
+* it's store the json object
+
+******Basic Commands for Redis****
+
+1.SET keyname value  -It will set the value.
+2.GET keyname        -It will print string keyvalue .
+3.DEL keyname	     -It will delete the value of keyname.
+4.EXISTS keyname     -It will print the interger value(0and 1). if the keyname is exists then print the integer 1 else 0.
+Ex: SET name AK
+    EXISTS name
+   
+We have just created the object 
+{name:'AK'}
+
+5.KEYS *    			-It will print the all keynames
+6.FLUSHALL  			-It will delete all the keyvalues
+7.clear    			-It will clear the screen
+8.ttl keyname   		-ttl(Time to live) It wil print how long has it been here or how long did it take to expire (keyname value).
+9.expire keyname sec 		-It will print the expire time .
+10.setex name 10 AK		-It will set the keyvalue and expire time.
+
+*************Array In Redis************
+Object :{friends : ["AK","Viren"]}
+
+1.lpush              -It will push at the zero index(Stack) Array .
+Ex:-
+lpush teammember AK
+LRANGE friends 0 -1
+
+2.rpush		     			-It will push at the last index(Stack) Array .
+Ex:-
+lpush teammember Viren
+LRANGE teammember 0 -1
+
+3. LRANGE keyname startpoint endpoint   -It will print the the array value of start index to end index.
+
+4.lpop              			-It will pop(Delete) at the zero index (Queue).
+Ex:-
+lpop teammember
+LRANGE teammember 0 -1
+
+5.rpop 		     			-It will pop(Delete) at the last index (Queue).
+Ex:-
+rpop teammember 
+LRANGE teammember 0 -1
+***********Using SADD ************
+6.SADD keyname "give values"      	-It is a array and it Can't repeat any element.
+Ex:-
+SADD hobbies "Singing"
+SADD hobbies  "Gaming"
+
+7.SMEMBERS keyname 			 -It prints all the SADD keynamevalues .
+Ex:-
+SMEMBERS hobbies
+***Prints***
+1)"Singing"
+2)"Gaming"
+
+Object: {hobbies:["Singing","Gaming"]}
+
+***********Add Objects**********
+Object: 
+{
+person:
+{ name: "AK"
+  age: "20"
+    }
+}
+
+1.HSET objectname  keyname value   -It will set an object Inside an object so need two keyname.
+Ex:-
+HSET person name AK
+HSET person age 20
+2.HGET objectname keyname          -It will print  keyvalue.
+Ex:-
+HGET person name 
+HGET person age 
+
+3.HGETALL objectname keyname       -It will print all the keyname and values.
+Ex:-
+HGETALL person
+
+4.HDEL person age         	   -It will Delete the keyname and value.
+
+5.HEXISTS person name              -It will print the interger value(0 and 1). if the keyname is exists then print the integer 1 else 0. 
+
+
