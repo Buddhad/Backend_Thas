@@ -2,8 +2,8 @@
 Download link - https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 
 Database - is a collection of tables
-* Postgres works on user
-* Postgres is a database .
+* Postgres works on user.
+* Postgres is a database.
 * It's case sensitive.
 
 ********Commands of PostgresSQL******
@@ -11,13 +11,13 @@ Database - is a collection of tables
 psql -U postgres  
 
 ***Create a user and Password***
-Create user ak with PASSWORD 'password'  
+Create user ak with PASSWORD 'password';  
 
 ***Create database***
 CREATE DATABASE devs;
 
-***Grant all Privilages on database ***
-GRANT ALL PRIVILAGES ON DATABASE database_Name to user_Name
+***Grant all Privileges on database ***
+GRANT ALL PRIVILEGES ON DATABASE database_Name to user_Name;
 
 ***Check the database is Created***
 \l
