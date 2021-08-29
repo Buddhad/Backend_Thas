@@ -1,5 +1,8 @@
 ---------------Redis------------------------------
-Redis - is semilar like a local storage or a session storage .
+Download Link :-
+
+
+Redis - is similar like a local storage or a session storage .
 Redis-cli --Start the redis local host 
 * it has key-value pair 
 * it's value  always string {key: "value"}
