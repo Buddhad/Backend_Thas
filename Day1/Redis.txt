@@ -25,12 +25,12 @@ We have just created the object
 10.setex name 10 AK		-It will set the keyvalue and expire time.
 
 *************Array In Redis************
-Object :{friends : ["AK","Viren"]}
+Object :{teammeber : ["AK","Viren"]}
 
 1.lpush              -It will push at the zero index(Stack) Array .
 Ex:-
 lpush teammember AK
-LRANGE friends 0 -1
+LRANGE teammember 0 -1
 
 2.rpush		     			-It will push at the last index(Stack) Array .
 Ex:-
