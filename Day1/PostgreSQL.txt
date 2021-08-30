@@ -98,6 +98,7 @@ DROP table_Name;
 \q
 
 ***Insert Single Data  into Table***
+
 INSERT INTO table_Name VALUES (1 , 'AK' , 10 , 'ABCD');
 
 ***INSERT Multiple Rows***
@@ -211,7 +212,179 @@ INSERT INTO fruits(name)
 VALUES('Banana')
 RETURNING id;
 
+***ADD COLUMN***
+ALTER TABLE table_name
+ADD COLUMN new_column_name data_type constraint;
+
+//constraint means null or not null
+
+Ex:-
+DROP TABLE IF EXISTS customers CASCADE;
+
+CREATE TABLE customers (
+    id SERIAL PRIMARY KEY,
+    customer_name VARCHAR NOT NULL
+);
+
+ALTER TABLE customers 
+ADD COLUMN phone VARCHAR;
 
 
+ALTER TABLE customers
+ADD COLUMN fax VARCHAR,
+ADD COLUMN email VARCHAR;
+
+
+******Joints******
+->we  have two tables called basket_a and basket_b that store fruits:
+
+CREATE TABLE basket_a (
+    a INT PRIMARY KEY,
+    fruit_a VARCHAR (100) NOT NULL
+);
+
+CREATE TABLE basket_b (
+    b INT PRIMARY KEY,
+    fruit_b VARCHAR (100) NOT NULL
+);
+
+INSERT INTO basket_a (a, fruit_a)
+VALUES
+    (1, 'Apple'),
+    (2, 'Orange'),
+    (3, 'Banana'),
+    (4, 'Cucumber');
+
+INSERT INTO basket_b (b, fruit_b)
+VALUES
+    (1, 'Orange'),
+    (2, 'Apple'),
+    (3, 'Watermelon'),
+    (4, 'Pear');
+
+
+***Inner join***
+->The first table (basket_a) with the second table (basket_b) by matching the values in the fruit_a and fruit_b columns:
+
+SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+INNER JOIN basket_b
+    ON fruit_a = fruit_b;
+
+
+***Left join***
+->The left join starts selecting data from the left table. It compares values in the fruit_a column with the values in the fruit_b column in the basket_b table.
+
+SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+LEFT JOIN basket_b 
+   ON fruit_a = fruit_b;
+
+
+ ***Left Outer Join***
+ ->To select rows from the left table that do not have matching rows in the right table, you use the left join with a WHERE clause.
+
+ SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+LEFT JOIN basket_b 
+    ON fruit_a = fruit_b
+WHERE b IS NULL;
+
+***Right join***
+->The right join is a reversed version of the left join. The right join starts selecting data from the right table.
+It compares each value in the fruit_b column of every row in the right table with each value in the fruit_a column of every row in the fruit_a table.
+
+SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+RIGHT JOIN basket_b ON fruit_a = fruit_b;
+
+ ***Right Outer Join***
+->Similarly, you can get rows from the right table that do not have matching rows from the left table by adding a WHERE clause as follows:
+
+ SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+RIGHT JOIN basket_b 
+   ON fruit_a = fruit_b
+WHERE a IS NULL;
+
+***Full outer join***
+->The full outer join or full join returns a result set that contains all rows from both left and right tables, 
+with the matching rows from both sides if available. In case there is no match, the columns of the table will be filled with NULL.
+
+SELECT
+    a,
+    fruit_a,
+    b,
+    fruit_b
+FROM
+    basket_a
+FULL OUTER JOIN basket_b 
+    ON fruit_a = fruit_b;
+
+
+ All Joins : https://www.postgresqltutorial.com/wp-content/uploads/2018/12/PostgreSQL-Joins.png
+
+ ***Self-join***
+
+ CREATE TABLE employee (
+	employee_id INT PRIMARY KEY,
+	first_name VARCHAR (255) NOT NULL,
+	last_name VARCHAR (255) NOT NULL,
+	manager_id INT,
+	FOREIGN KEY (manager_id) 
+	REFERENCES employee (employee_id) 
+	ON DELETE CASCADE
+);
+INSERT INTO employee (
+	employee_id,
+	first_name,
+	last_name,
+	manager_id
+)
+VALUES
+	(1, 'Windy', 'Hays', NULL),
+	(2, 'Ava', 'Christensen', 1),
+	(3, 'Hassan', 'Conner', 1),
+	(4, 'Anna', 'Reeves', 2),
+	(5, 'Sau', 'Norman', 2),
+	(6, 'Kelsie', 'Hays', 3),
+	(7, 'Tory', 'Goff', 3),
+	(8, 'Salley', 'Lester', 3);
+
+
+    SELECT
+    e.first_name || ' ' || e.last_name employee,
+    m .first_name || ' ' || m .last_name manager
+FROM
+    employee e
+INNER JOIN employee m ON m .employee_id = e.manager_id
+ORDER BY manager;
+
+Image :https://www.postgresqltutorial.com/wp-content/uploads/2018/03/PostgreSQL-Self-Join-Reporting-Structure.png
 
 
