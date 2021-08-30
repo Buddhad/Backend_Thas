@@ -1,10 +1,54 @@
 ****************Postgres*********************
 Download link - https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+Tutorial Link - https://www.postgresqltutorial.com/
 
 Database - is a collection of tables
 * Postgres works on user.
 * Postgres is a database.
 * It's case sensitive.
+
+***DataType***
+1.Numeric Types
+->Numeric types consist of two-byte, four-byte, and eight-byte integers, four-byte and eight-byte floating-point numbers, and selectable-precision decimals.
+
+* smallint(2 bytes)          -small-range integer(-32768 to +32767)
+* integer(4 bytes)           -typical choice for integer(-2147483648 to +2147483647)
+* bigint(8 bytes)            -large-range integer(-9223372036854775808 to 9223372036854775807)
+* decimal(variable)          -user-specified precision,exact(up to 131072 digits before the decimal point; up to 16383 digits after the decimal point)
+* numeric(variable)          -user-specified precision,exact (up to 131072 digits before the decimal point; up to 16383 digits after the decimal point)
+* real(4 bytes)              -variable-precision,inexact (6 decimal digits precision)
+* double precision(8 bytes)  -variable-precision(15 decimal digits precision)
+* smallserial(2 bytes)	     -small autoincrementing integer(1 to 32767)
+* serial(4 bytes)            -autoincrementing integer(1 to 2147483647)
+* bigserial(8 bytes)         -large autoincrementing integer(1 to 9223372036854775807)
+
+2.Monetary Types
+->The money type stores a currency amount with a fixed fractional precision. Values of the numeric, int, and bigint data types can be cast to money.
+
+* money(8 bytes)     -currency amount(-92233720368547758.08 to +92233720368547758.07)
+
+3.Character Types
+* character varying(n), varchar(n)    -n(numbers) variable-length with limit.
+* character(n), char(n)               -n(numbers)  fixed-length, blank padded
+* text                                -variable unlimited length
+
+4.Binary Data Types
+->The bytea data type allows storage of binary strings.
+* bytea(1 or 4 bytes plus the actual binary string)    - variable-length binary string
+
+5.Temporal data types
+->The temporal data types allow you to store date and /or  time data. PostgreSQL has five main temporal data types.
+i) DATE(4 bytes)           -stores the dates only.
+ii)TIME(8 bytes)           -stores the time of day values.
+iii)TIMESTAMP(8 bytes)     -stores both date and time values.
+iv)TIMESTAMPTZ(8 bytes)    -is a timezone-aware timestamp data type. It is the abbreviation for timestamp with the time zone.
+v)INTERVAL(12 bytes)       -stores periods of time.
+
+6.Boolean Type
+-> The Boolean data type can have the states true, false, and a third state, unknown, which is represented by the SQL null value.
+
+* boolean(1 byte)     -state of true or false
+
 
 ********Commands of PostgresSQL******
 ***Start the PostgresSql***
@@ -37,14 +81,59 @@ ADDRESS TEXT
 ***Check The Table is Created***
 \d
 or
-\d tablename
+\d table_name
 
 
 ***Delete the Database***
-DROP TABLE table_Name;
+DROP database_Name;
+
+***Delete the  Table***
+DROP table_Name;
 
 ***Quit the psql server***
 \q
+
+***Insert Data into Table***
+
+INSERT INTO table_Name VALUES (1 , 'AK' , 10 , 'ABCD');
+
+***Delete Row form Table***
+DELETE FROM table_name
+WHERE condition(id =1);
+
+Ex:-
+DROP TABLE IF EXISTS links;
+
+CREATE TABLE links (
+    id serial PRIMARY KEY,
+    url varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
+    description varchar(255),
+    rel varchar(10),
+    last_update date DEFAULT now()
+);
+
+INSERT INTO  links VALUES 
+   ('1', 'https://www.postgresqltutorial.com', 'PostgreSQL Tutorial', 'Learn PostgreSQL fast and easy', 'follow', '2013-06-02'),
+   ('2', 'http://www.oreilly.com', 'O''Reilly Media', 'O''Reilly Media', 'nofollow', '2013-06-02'),
+   ('3', 'http://www.google.com', 'Google', 'Google', 'nofollow', '2013-06-02'),
+   ('4', 'http://www.yahoo.com', 'Yahoo', 'Yahoo', 'nofollow', '2013-06-02'),
+   ('5', 'http://www.bing.com', 'Bing', 'Bing', 'nofollow', '2013-06-02'),
+   ('6', 'http://www.facebook.com', 'Facebook', 'Facebook', 'nofollow', '2013-06-01'),
+   ('7', 'https://www.tumblr.com/', 'Tumblr', 'Tumblr', 'nofollow', '2013-06-02'),
+   ('8', 'http://www.postgresql.org', 'PostgreSQL', 'PostgreSQL', 'nofollow', '2013-06-02');
+
+DELETE FROM links
+WHERE id = 8;
+
+***Delete all Rows from the table***
+DELETE FROM table_Name;
+
+*** Delete a row and Return the Deleted row***
+
+DELETE FROM table_Name
+WHERE id = 7
+RETURNING *;
 
 
 
