@@ -50,6 +50,7 @@ v)INTERVAL(12 bytes)       -stores periods of time.
 * boolean(1 byte)     -state of true or false
 
 
+
 ********Commands of PostgresSQL******
 ***Start the PostgresSql***
 psql -U postgres  
@@ -78,10 +79,13 @@ AGE INT,
 ADDRESS TEXT
 );
 
+
 ***Check The Table is Created***
 \d
 or
 \d table_name
+or 
+SELECT * FROM table_Name;
 
 
 ***Delete the Database***
@@ -93,9 +97,39 @@ DROP table_Name;
 ***Quit the psql server***
 \q
 
-***Insert Data into Table***
-
+***Insert Single Data  into Table***
 INSERT INTO table_Name VALUES (1 , 'AK' , 10 , 'ABCD');
+
+***INSERT Multiple Rows***
+Ex:-
+
+DROP TABLE IF EXISTS links;
+
+CREATE TABLE links (
+    id SERIAL PRIMARY KEY,
+    url VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255)
+);
+
+INSERT INTO 
+    links (url, name)
+VALUES
+    ('https://www.google.com','Google'),
+    ('https://www.yahoo.com','Yahoo'),
+    ('https://www.bing.com','Bing');
+
+    SELECT * FROM links;
+
+***Inserting multiple rows and returning inserted rows***
+
+INSERT INTO 
+    links(url,name, description)
+VALUES
+    ('https://duckduckgo.com/','DuckDuckGo','Privacy & Simplified Search Engine'),
+    ('https://swisscows.com/','Swisscows','Privacy safe WEB-search')
+RETURNING *;
+
 
 ***Delete Row form Table***
 DELETE FROM table_name
@@ -130,17 +164,52 @@ WHERE id = 8;
 DELETE FROM table_Name;
 
 *** Delete a row and Return the Deleted row***
-
 DELETE FROM table_Name
 WHERE id = 7
 RETURNING *;
 
+***BETWEEN operator***
+
+value(row_name) BETWEEN low AND high;      
+value >= low and value <= high   -it will print all the data.
+value NOT BETWEEN low AND high;  -it will print all the data .
+value < low OR value > high;    
+
+Ex:-
+SELECT
+	customer_id,
+	payment_id,
+	amount
+FROM
+	payment
+WHERE
+	amount BETWEEN 8 AND 9;
 
 
+***Create Auto-increment Column***
 
+CREATE TABLE table_name(
+    id SERIAL
+);
 
+Ex:-
+CREATE TABLE fruits(
+   id SERIAL PRIMARY KEY,
+   name VARCHAR NOT NULL
+);
 
+INSERT INTO fruits(name) 
+VALUES('Orange');
 
+INSERT INTO fruits(id,name) 
+VALUES(DEFAULT,'Apple');
+
+SELECT * FROM fruits;
+
+***inserts a new row into the fruits table and returns the value generated for the id column***
+INSERT INTO fruits(name) 
+VALUES('Banana')
+RETURNING id;
 
 
 
