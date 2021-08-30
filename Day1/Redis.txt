@@ -93,3 +93,9 @@ HGETALL person
 5.HEXISTS person name              -It will print the interger value(0 and 1). if the keyname is exists then print the integer 1 else 0. 
 
 
+****Publish and Subcriber(PubSub)****
+SUBSCRIBE gamedev
+
+PUBLISH gamedev hello
+
+PUBLISH gamedev 'You have been Hacked!! LOL' - For string 
