@@ -1,0 +1,252 @@
+Q) Write the SQl Commands for the following queries
+
+1) Create a table called “employee10” having the following fields:-
+
+A) emp_id
+
+b) ename
+
+c) address
+
+d) salary
+
+2) Create a table called “salary10” having the following fields:-
+
+a) emp_id
+
+b) ename
+
+c) salary
+
+d) phone_no
+
+3) Insert at least 05 records in the above tables.
+
+4) Find out the maximum and minimum salary of the employees.
+
+5) Find out the name, address and phone_no of all employees
+
+6) Find out the emp_id, name and salary of those
+
+employees whose name starts with “S”
+
+7) Find the name , emp_id, address and salary of those employees who earn more than Rs 5000.
+
+8) Find the emp_id , name and phone _no of those employees whose name starts with “P” and earns salary between 6000 and 10000 rupees
+
+9) Find the name , address and phone number of those employees who lives in “ Barasat”
+
+10) Drop table employee
+
+
+******Answers******
+create database assignment;
+use assignment;
+create table employee9(
+empid int not null auto_increment primary key,
+emp_name varchar(255) not null,
+address varchar(255) not null,
+phone dec(10,0) not null,
+salary int not null
+
+);
+
+insert into employee9
+values (1,'Buddhadeb Chhetri', 'Kalyani',9007609841,25000),
+       (2,'Debasmita Sarkar','Dum Dum Canto',8465631339,24000),
+       (3,'Protim Debnath','Madhamgram',756432535,12000),
+       (4,'Mourima Saha','Madhamgram',756432535,13000),
+       (5,'Quazi Adnan Haque','Barasat',756432535,17000),
+       (6,'Rounak Bhanja','Madhamgram',756432535,16000),
+       (7,'Sony Giri','Lilua',866432535,19000),
+       (8,'Sukanya Sarkar ','Ranaghat',766432535,7000),
+       (9,'Pushkar Saha','Gujarat',782432535,8000),
+       (10,'Aoyn Dutta','Delhi',952432335,9000);
+       
+select * from employee9;
+
+select * from employee9
+where address = 'Barasat';
+
+select * from employee9
+where emp_name like 'S%';
+
+select sum(salary)
+from employee9;
+
+select max(salary)
+from employee9;
+
+select min(salary)
+from employee9;
+
+select avg(salary)
+from employee9;
+
+delete from employee9
+where empid=10;
+
+select * from employee9;
+
+update employee9
+set salary =salary +salary*0.1;
+
+
+ALTER TABLE employee9 ADD email_id varchar(255) not null;
+
+update employee9 
+set email_id = 'bdev3355@gmail.com'
+where empid =1;
+
+update employee9 
+set email_id = 'debasmita3355@gmail.com'
+where empid =2;
+
+update employee9 
+set email_id = 'protim3355@gmail.com'
+where empid =3;
+
+update employee9 
+set email_id = 'mourima3355@gmail.com'
+where empid =4;
+
+update employee9 
+set email_id = 'quaziadnan3355@gmail.com'
+where empid =5;
+
+update employee9 
+set email_id = 'rounak3355@gmail.com'
+where empid =6;
+
+update employee9 
+set email_id = 'sony3355@gmail.com'
+where empid =7;
+
+update employee9 
+set email_id = 'sukanya3355@gmail.com'
+where empid =8;
+
+update employee9 
+set email_id = 'pushkar3355@gmail.com'
+where empid =9;
+
+select * from employee9
+where salary <10000;
+
+select * from employee9
+where salary between 10000 and 15000;
+
+SELECT COUNT(*) as assignment
+FROM employee9;
+
+
+select * from employee9
+where emp_name like 'p%'and salary >5000;
+
+
+DROP TABLE employee9;
+create database assignment;
+use assignment;
+create table employee9(
+empid int not null auto_increment primary key,
+emp_name varchar(255) not null,
+address varchar(255) not null,
+phone dec(10,0) not null,
+salary int not null
+
+);
+
+insert into employee9
+values (1,'Buddhadeb Chhetri', 'Kalyani',9007609841,25000),
+       (2,'Debasmita Sarkar','Dum Dum Canto',8465631339,24000),
+       (3,'Protim Debnath','Madhamgram',756432535,12000),
+       (4,'Mourima Saha','Madhamgram',756432535,13000),
+       (5,'Quazi Adnan Haque','Barasat',756432535,17000),
+       (6,'Rounak Bhanja','Madhamgram',756432535,16000),
+       (7,'Sony Giri','Lilua',866432535,19000),
+       (8,'Sukanya Sarkar ','Ranaghat',766432535,7000),
+       (9,'Pushkar Saha','Gujarat',782432535,8000),
+       (10,'Aoyn Dutta','Delhi',952432335,9000);
+       
+select * from employee9;
+
+select * from employee9
+where address = 'Barasat';
+
+select * from employee9
+where emp_name like 'S%';
+
+select sum(salary)
+from employee9;
+
+select max(salary)
+from employee9;
+
+select min(salary)
+from employee9;
+
+select avg(salary)
+from employee9;
+
+delete from employee9
+where empid=10;
+
+select * from employee9;
+
+update employee9
+set salary =salary +salary*0.1;
+
+
+ALTER TABLE employee9 ADD email_id varchar(255) not null;
+
+update employee9 
+set email_id = 'bdev3355@gmail.com'
+where empid =1;
+
+update employee9 
+set email_id = 'debasmita3355@gmail.com'
+where empid =2;
+
+update employee9 
+set email_id = 'protim3355@gmail.com'
+where empid =3;
+
+update employee9 
+set email_id = 'mourima3355@gmail.com'
+where empid =4;
+
+update employee9 
+set email_id = 'quaziadnan3355@gmail.com'
+where empid =5;
+
+update employee9 
+set email_id = 'rounak3355@gmail.com'
+where empid =6;
+
+update employee9 
+set email_id = 'sony3355@gmail.com'
+where empid =7;
+
+update employee9 
+set email_id = 'sukanya3355@gmail.com'
+where empid =8;
+
+update employee9 
+set email_id = 'pushkar3355@gmail.com'
+where empid =9;
+
+select * from employee9
+where salary <10000;
+
+select * from employee9
+where salary between 10000 and 15000;
+
+SELECT COUNT(*) as assignment
+FROM employee9;
+
+
+select * from employee9
+where emp_name like 'p%'and salary >5000;
+
+
+DROP TABLE employee9;
