@@ -1,6 +1,9 @@
 ---------------Redis------------------------------
 Download Link :- https://developer.redis.com/create/windows/
 
+Search windowbox  :- Turn window Feature on/off
+Windows SubSystem for linux
+Restart the Window
 
 Redis - is similar like a local storage or a session storage .
 Redis-cli --Start the redis local host 
