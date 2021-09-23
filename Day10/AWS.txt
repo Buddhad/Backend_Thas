@@ -1,0 +1,17 @@
+Here we are going to learn Deployment on AWS.
+Steps:-
+    1. Go to AWS Console.
+    2. Create Account.
+    3. Select Launch EC2 instance.
+    4. Configure Network settings and SSH.
+    5. Now connect to your AWS instance.
+    6. Now in your instance Clone your website through github.
+    7. Install NVM in you AWS instance.
+    8. Now run you WebApp and assign port.
+    9. Now to run your webApp in background use below command:
+        Command:-
+            $ forever start ./bin/www
+        To check runnign background webApps use:
+        Command:-
+            $ forever list
+    10. WebApp is hoisted Now.
