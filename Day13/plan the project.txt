@@ -1,0 +1,19 @@
+So Here we are to know how to plan your project?
+So in industry standard we use a special method to plan the project known as AGILE METHODOLOGY.
+
+What is Agile?
+    Agile software development refers to a group of software development methodologies based on iterative development,
+    where requirements and solutions evolve through collaboration between self-organizing cross-functional teams. 
+
+What is Scrum?
+    Scrum is a daily team meeting of nearly 15-20 mins where we discuss our problems and
+    work progress with our teammates.
+
+So planning the project includes:-
+    1. Requirement gathering about the project.
+    2. Then breaking the projects into small atomic problems.
+    3. Creating HLD documents which consists of your work to do.
+    4. Conducting Daily SCRUMS to check upon work progress with teammates.
+    5. Getting feedback from Customers and using that feedback to update the project.
+
+    #For this we can use a software names- JIRA SOFTWARE.
